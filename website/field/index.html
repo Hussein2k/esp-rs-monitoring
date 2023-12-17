@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Field</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <ul id="main_list">
+
+        <li class="clickable">
+            <div class="sensor_value_container">
+                <h3 class="node_title">Node 3</h3>
+                
+                <div style="display: flex; justify-content: center;">
+                    <img class="sensor_image" src="sensor.png">
+                </div>
+                <div class="sensor_value_display">
+                    <a>Humidity: </a>
+                    <a id="sensor3_humidity">57.7 %</a>
+                </div>
+                <br>
+                <div class="sensor_value_display">
+                    <a>Temperature: </a>
+                    <a id="sensor3_temperature">27.2 deg.</a>
+                </div>
+                <br>
+            </div>
+        </li>
+
+    </ul>
+    <!-- <button id="delete_t" onclick="post_t()">Del2</button>
+    <button id="2dd2" onclick="update_relay_status(2,0,1)">Del</button> -->
+
+    <ul id="relay_list">
+
+        <!-- RELAY 1 -->
+        <li>
+            <div class="relay_container" id="relay1_container">
+                <h3 class="relay_title">Relay 1</h3>
+                <!-- <div class="relay_value_display">
+                    <a>Mode: </a>
+                    <a id="relay1_mode">Always OFF</a>
+                </div>
+                <br>
+                <div class="relay_value_display">
+                    <a>Status</a>
+                    <a id="relay1_status">OFF</a>
+                </div> -->
+                <div style="display: flex;justify-content: center;">
+
+                    <img class="relay_image" src="relay.png">
+
+                </div>
+                <div class="buttons_container" style="display: flex; justify-content: space-evenly;margin-top: 10%;">
+
+                    <input type="radio" value="0" name="r1g1" onclick="enable_ranges_list('automation_menu1')">
+                    Auto
+                    <input type="radio" value="1" name="r1g1" onclick="disable_ranges_list('automation_menu1')">
+                    ON
+                    <input type="radio" value="2" name="r1g1" onclick="disable_ranges_list('automation_menu1')"
+                        checked="true">
+                    OFF
+
+                </div>
+
+                <br>
+
+                <div class="automation_menu" id="automation_menu1" style="display: none;">
+
+                    <!-- CHOOSE NODE -->
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_sensor_sel_1">Choose Node:</label>
+                        <select id="relay_conf_sensor_sel_1" name="fruits">
+                            <option value="1" name="r1g2">NODE 1</option>
+                            <option value="2" name="r1g2">NODE 2</option>
+                            <option value="3" name="r1g2">NODE 3</option>
+                        </select>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_dep_sel_1">Dependence:</label>
+                        <select id="relay_conf_dep_sel_1" name="fruits">
+                            <option value="1">Humidity Sensor</option>
+                            <option value="2">Temperature Sensor</option>
+                            <option value="4">Voltage Sensor</option>
+                        </select>
+                    </div>
+
+                    <br>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <label for="min1">Min:</label>
+                        <input type="number" id="min1" name="min" style="width:60px;" required value="0">
+
+                        <span for="max1">Max:</span>
+                        <input type="number" id="max1" name="max" style="width:60px" required value="1">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;margin-top: 5%;">
+                    <button type="button" onclick="get_relay_configuration(1)" style="width: 100px;cursor: pointer;">Set</button>
+                </div>
+            </div>
+        </li>
+
+        <!-- RELAY 2 -->
+        <li>
+            <div class="relay_container" id="relay2_container">
+                <h3 class="relay_title">Relay 2</h3>
+                <!--    <div class="relay_value_display">
+                    <a>Mode: </a>
+                    <a id="relay2_mode">Always OFF</a>
+                </div>
+                <br>
+                <div class="relay_value_display">
+                    <a>Status</a>
+                    <a id="relay2_status">OFF</a>
+                </div> -->
+                <div style="display: flex;justify-content: center;">
+                    <img class="relay_image" src="relay.png">
+                </div>
+                <div class="buttons_container" style="display: flex; justify-content: space-evenly;margin-top: 10%;">
+                    <input type="radio" value="0" name="r2g1" onclick="enable_ranges_list('automation_menu2')">
+                    Auto
+                    <input type="radio" value="1" name="r2g1" onclick="disable_ranges_list('automation_menu2')">
+                    ON
+                    <input type="radio" value="2" name="r2g1" onclick="disable_ranges_list('automation_menu2')"
+                        checked="true">
+                    OFF
+                </div>
+                <br>
+                <div class="automation_menu" id="automation_menu2" style="display: none;">
+                    <!-- CHOOSE NODE -->
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_sensor_sel_2">Choose Node:</label>
+                        <select id="relay_conf_sensor_sel_2" name="fruits">
+                            <option value="1" name="r2g2">NODE 1</option>
+                            <option value="2" name="r2g2">NODE 2</option>
+                            <option value="3" name="r2g2">NODE 3</option>
+                        </select>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_dep_sel_2">Dependence:</label>
+                        <select id="relay_conf_dep_sel_2" name="fruits">
+                            <option value="1">Humidity Sensor</option>
+                            <option value="2">Temperature Sensor</option>
+                            <option value="4">Voltage Sensor</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <label for="min2">Min:</label>
+                        <input type="number" id="min2" name="min" style="width:60px;" required value="0">
+                        <span for="max2">Max:</span>
+                        <input type="number" id="max2" name="max" style="width:60px" required value="1">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;margin-top: 5%;">
+                    <button type="button" onclick="get_relay_configuration(2)" style="width: 100px;cursor: pointer;">Set</button>
+                </div>
+            </div>
+        </li>
+
+        <!-- RELAY 3 -->
+        <li>
+            <div class="relay_container" id="relay3_container">
+                <h3 class="relay_title">Relay 3</h3>
+                <!-- <div class="relay_value_display">
+                    <a>Mode: </a>
+                    <a id="relay3_mode">Always OFF</a>
+                </div>
+                <br>
+                <div class="relay_value_display">
+                    <a>Status</a>
+                    <a id="relay3_status">OFF</a>
+                </div> -->
+                <div style="display: flex;justify-content: center;">
+                    <img class="relay_image" src="relay.png">
+                </div>
+                <div class="buttons_container" style="display: flex; justify-content: space-evenly;margin-top: 10%;">
+                    <input type="radio" value="0" name="r3g1" onclick="enable_ranges_list('automation_menu3')">
+                    Auto
+                    <input type="radio" value="1" name="r3g1" onclick="disable_ranges_list('automation_menu3')">
+                    ON
+                    <input type="radio" value="2" name="r3g1" onclick="disable_ranges_list('automation_menu3')"
+                        checked="true">
+                    OFF
+                </div>
+                <br>
+                <div class="automation_menu" id="automation_menu3" style="display: none;">
+                    <!-- CHOOSE NODE -->
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_sensor_sel_3">Choose Node:</label>
+                        <select id="relay_conf_sensor_sel_3" name="fruits">
+                            <option value="1" name="r3g2">NODE 1</option>
+                            <option value="2" name="r3g2">NODE 2</option>
+                            <option value="3" name="r3g2">NODE 3</option>
+                        </select>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_dep_sel_3">Dependence:</label>
+                        <select id="relay_conf_dep_sel_3" name="fruits">
+                            <option value="1">Humidity Sensor</option>
+                            <option value="2">Temperature Sensor</option>
+                            <option value="4">Voltage Sensor</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <label for="min3">Min:</label>
+                        <input type="number" id="min3" name="min" style="width:60px;" required value="0">
+                        <span for="max3">Max:</span>
+                        <input type="number" id="max3" name="max" style="width:60px" required value="1">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;margin-top: 5%;">
+                    <button type="button" onclick="get_relay_configuration(3)" style="width: 100px;cursor: pointer;">Set</button>
+                </div>
+            </div>
+        </li>
+
+        <!-- RELAY 4 -->
+        <li>
+            <div class="relay_container" id="relay4_container">
+                <h3 class="relay_title">Relay 4</h3>
+                <!-- <div class="relay_value_display">
+                    <a>Mode: </a>
+                    <a id="relay4_mode">Always OFF</a>
+                </div>
+                <br>
+                <div class="relay_value_display">
+                    <a>Status</a>
+                    <a id="relay4_status">OFF</a>
+                </div> -->
+                <div style="display: flex;justify-content: center;">
+                    <img class="relay_image" src="relay.png">
+                </div>
+                <div class="buttons_container" style="display: flex; justify-content: space-evenly;margin-top: 10%;">
+                    <input type="radio" value="0" name="r4g1" onclick="enable_ranges_list('automation_menu4')">
+                    Auto
+                    <input type="radio" value="1" name="r4g1" onclick="disable_ranges_list('automation_menu4')">
+                    ON
+                    <input type="radio" value="2" name="r4g1" onclick="disable_ranges_list('automation_menu4')"
+                        checked="true">
+                    OFF
+                </div>
+                <br>
+                <div class="automation_menu" id="automation_menu4" style="display: none;">
+                    <!-- CHOOSE NODE -->
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_sensor_sel_4">Choose Node:</label>
+                        <select id="relay_conf_sensor_sel_4" name="fruits">
+                            <option value="1" name="r4g2">NODE 1</option>
+                            <option value="2" name="r4g2">NODE 2</option>
+                            <option value="3" name="r4g2">NODE 3</option>
+                        </select>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_dep_sel_4">Dependence:</label>
+                        <select id="relay_conf_dep_sel_4" name="fruits">
+                            <option value="1">Humidity Sensor</option>
+                            <option value="2">Temperature Sensor</option>
+                            <option value="4">Voltage Sensor</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <label for="min4">Min:</label>
+                        <input type="number" id="min4" name="min" style="width:60px;" required value="0">
+                        <span for="max4">Max:</span>
+                        <input type="number" id="max4" name="max" style="width:60px" required value="1">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;margin-top: 5%;">
+                    <button type="button" onclick="get_relay_configuration(4)" style="width: 100px;cursor: pointer;">Set</button>
+                </div>
+            </div>
+        </li>
+
+        <!-- RELAY 5 -->
+        <li>
+            <div class="relay_container" id="relay5_container">
+                <h3 class="relay_title">Relay 5</h3>
+                <!-- <div class="relay_value_display">
+                    <a>Mode: </a>
+                    <a id="relay5_mode">Always OFF</a>
+                </div>
+                <br>
+                <div class="relay_value_display">
+                    <a>Status</a>
+                    <a id="relay5_status">OFF</a>
+                </div> -->
+                <div style="display: flex;justify-content: center;">
+                    <img class="relay_image" src="relay.png">
+                </div>
+                <div class="buttons_container" style="display: flex; justify-content: space-evenly;margin-top: 10%;">
+                    <input type="radio" value="0" name="r5g1" onclick="enable_ranges_list('automation_menu5')">
+                    Auto
+                    <input type="radio" value="1" name="r5g1" onclick="disable_ranges_list('automation_menu5')">
+                    ON
+                    <input type="radio" value="2" name="r5g1" onclick="disable_ranges_list('automation_menu5')"
+                        checked="true">
+                    OFF
+                </div>
+                <br>
+                <div class="automation_menu" id="automation_menu5" style="display: none;">
+                    <!-- CHOOSE NODE -->
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_sensor_sel_5">Choose Node:</label>
+                        <select id="relay_conf_sensor_sel_5" name="fruits">
+                            <option value="1" name="r5g2">NODE 1</option>
+                            <option value="2" name="r5g2">NODE 2</option>
+                            <option value="3" name="r5g2">NODE 3</option>
+                        </select>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_dep_sel_5">Dependence:</label>
+                        <select id="relay_conf_dep_sel_5" name="fruits">
+                            <option value="1">Humidity Sensor</option>
+                            <option value="2">Temperature Sensor</option>
+                            <option value="4">Voltage Sensor</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <label for="min5">Min:</label>
+                        <input type="number" id="min5" name="min" style="width:60px;" required value="0">
+                        <span for="max5">Max:</span>
+                        <input type="number" id="max5" name="max" style="width:60px" required value="1">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;margin-top: 5%;">
+                    <button type="button" onclick="get_relay_configuration(5)" style="width: 100px;cursor: pointer;">Set</button>
+                </div>
+            </div>
+        </li>
+
+        <!-- RELAY 6 -->
+        <li>
+            <div class="relay_container" id="relay6_container">
+                <h3 class="relay_title">Relay 6</h3>
+                <!-- <div class="relay_value_display">
+                    <a>Mode: </a>
+                    <a id="relay6_mode">Always OFF</a>
+                </div>
+                <br>
+                <div class="relay_value_display">
+                    <a>Status</a>
+                    <a id="relay6_status">OFF</a>
+                </div> -->
+                <div style="display: flex;justify-content: center;">
+                    <img class="relay_image" src="relay.png">
+                </div>
+                <div class="buttons_container" style="display: flex; justify-content: space-evenly;margin-top: 10%;">
+                    <input type="radio" value="0" name="r6g1" onclick="enable_ranges_list('automation_menu6')">
+                    Auto
+                    <input type="radio" value="1" name="r6g1" onclick="disable_ranges_list('automation_menu6')">
+                    ON
+                    <input type="radio" value="2" name="r6g1" onclick="disable_ranges_list('automation_menu6')"
+                        checked="true">
+                    OFF
+                </div>
+                <br>
+                <div class="automation_menu" id="automation_menu6" style="display: none;">
+                    <!-- CHOOSE NODE -->
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_sensor_sel_6">Choose Node:</label>
+                        <select id="relay_conf_sensor_sel_6" name="fruits">
+                            <option value="1" name="r6g2">NODE 1</option>
+                            <option value="2" name="r6g2">NODE 2</option>
+                            <option value="3" name="r6g2">NODE 3</option>
+                        </select>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 3%;margin-left: 2%;margin-right: 2%;">
+                        <label for="relay_conf_dep_sel_6">Dependence:</label>
+                        <select id="relay_conf_dep_sel_6" name="fruits">
+                            <option value="1">Humidity Sensor</option>
+                            <option value="2">Temperature Sensor</option>
+                            <option value="4">Voltage Sensor</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <label for="min6">Min:</label>
+                        <input type="number" id="min6" name="min" style="width:60px;" required value="0">
+                        <span for="max6">Max:</span>
+                        <input type="number" id="max6" name="max" style="width:60px" required value="1">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;margin-top: 5%;">
+                    <button type="button" onclick="get_relay_configuration(6)" style="width: 100px;cursor: pointer;">Set</button>
+                </div>
+            </div>
+        </li>
+
+
+
+
+    </ul>
+
+</body>
